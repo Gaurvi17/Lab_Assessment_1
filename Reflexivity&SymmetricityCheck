@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    int matrix[100][100];
+
+    int reflexive = 1;
+    int symmetric = 1;
+
+    printf("Enter the size of relation matrix: ");
+    scanf("%d", &n);
+
+    printf("Enter the relation matrix:\n");
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        if (matrix[i][i] != 1)
+        {
+            reflexive = 0;
+            break;
+        }
+    }
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            if (matrix[i][j] != matrix[j][i])
+            {
+                symmetric = 0;
+                break;
+            }
+        }
+
+        if (symmetric == 0)
+            break;
+    }
+    if (reflexive)
+        printf("Reflexive\n");
+    else
+        printf("Not Reflexive\n");
+
+    if (symmetric)
+        printf("Symmetric\n");
+    else
+        printf("Not Symmetric\n");
+
+    return 0;
+}
